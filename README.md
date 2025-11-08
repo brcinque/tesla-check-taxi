@@ -1,6 +1,8 @@
 # Tesla Robotaxi Failure Indicator System
 
-Monitor key signals to assess Scenario 2 (robotaxi failure) risk.
+Real-time monitoring system tracking Tesla's robotaxi progress with 12+ data sources, comprehensive risk analysis, and automated journey tracking against milestone goals.
+
+![Dashboard Example](docs/dashboard-example.png)
 
 ## Quick Start
 

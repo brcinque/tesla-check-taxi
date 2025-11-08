@@ -30,10 +30,9 @@ tokens.txt
 # Output files (exclude generated files, keep project files)
 output/
 *.png
-archive/**/*.json
-archive/**/*.txt
-archive/**/*.png
-archive/**/*.html
+
+# Archive directory (local backups only)
+archive/
 
 # IDE
 .vscode/
