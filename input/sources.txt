@@ -1,0 +1,249 @@
+**Data Sources & Monitoring Framework for Scenario 2 (Failure) Detection**
+
+Here's a comprehensive tracking system mixing hard data with objective expert analysis:
+
+---
+
+## **1. REGULATORY & SAFETY DATA (Most Critical)**
+
+**Primary Sources:**
+
+**NHTSA (National Highway Traffic Safety Administration):**
+- URL: https://www.nhtsa.gov/
+- **What to track:** 
+  - Standing General Order (SGO) reports on AV crashes
+  - Tesla-specific incident investigations
+  - Recall notices related to FSD/Autopilot
+- **Red flags:** Increasing investigations, forced recalls, public safety warnings
+- **Check frequency:** Monthly
+
+**California DMV Autonomous Vehicle Reports:**
+- URL: https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/
+- **What to track:**
+  - Disengagement reports (how often human takes over)
+  - Annual mileage reports
+  - Compare Tesla's disengagement rate vs. Waymo, Cruise
+- **Red flags:** Tesla's disengagement rate not improving or worsening vs. competitors
+- **Check frequency:** Quarterly (reports published annually, but news coverage ongoing)
+
+**NTSB (National Transportation Safety Board):**
+- URL: https://www.ntsb.gov/
+- **What to track:** Fatal crash investigations involving Tesla FSD/Autopilot
+- **Red flags:** Patterns of similar failures, critical findings against Tesla
+- **Check frequency:** As incidents occur
+
+---
+
+## **2. TESLA'S OWN DISCLOSURES**
+
+**Tesla Earnings Calls & Shareholder Letters:**
+- URL: https://ir.tesla.com/
+- **What to track:**
+  - FSD revenue recognition (are they still deferring it?)
+  - Miles driven on FSD (growth rate)
+  - Robotaxi launch timeline mentions (are dates slipping?)
+  - Management tone on autonomy progress
+- **Red flags:** 
+  - Vague language replacing specific timelines
+  - Decreasing emphasis on robotaxi in investor materials
+  - FSD take rate declining
+- **Check frequency:** Quarterly
+
+**Tesla AI Day / Autonomy Day Events:**
+- **What to track:** Technical demonstrations, capability claims
+- **Red flags:** 
+  - Cancellation of events
+  - Demos that look staged or limited
+  - Lack of concrete progress metrics
+- **Check frequency:** Annually (if held)
+
+---
+
+## **3. INDEPENDENT TESTING & DATA**
+
+**Consumer Reports:**
+- URL: https://www.consumerreports.org/
+- **What to track:** FSD testing results, safety ratings, owner satisfaction
+- **Red flags:** Negative test results, safety warnings, declining ratings
+- **Check frequency:** Semi-annually
+
+**Insurance Institute for Highway Safety (IIHS):**
+- URL: https://www.iihs.org/
+- **What to track:** Autonomous vehicle safety research, Tesla-specific studies
+- **Red flags:** Studies showing Tesla safety below human baseline or competitors
+- **Check frequency:** Quarterly
+
+**MIT Advanced Vehicle Technology (AVT) Consortium:**
+- URL: https://agelab.mit.edu/
+- **What to track:** Academic research on Tesla Autopilot/FSD effectiveness
+- **Red flags:** Peer-reviewed studies showing safety concerns
+- **Check frequency:** Semi-annually
+
+---
+
+## **4. OBJECTIVE EXPERT ANALYSIS**
+
+**Guidehouse Insights Autonomous Vehicle Leaderboard:**
+- **What to track:** Annual ranking of AV companies on technology, strategy, execution
+- **Red flags:** Tesla dropping in rankings, competitors pulling ahead
+- **Check frequency:** Annually (usually published Q1)
+
+**Key Analysts to Follow (for objective, not hype-driven takes):**
+
+**Bearish but Data-Driven:**
+- **Gordon Johnson** (GLJ Research) - Tesla skeptic, tracks delivery/production data
+- **Toni Sacconaghi** (Bernstein) - Balanced, focuses on fundamentals
+
+**Bullish but Honest:**
+- **Adam Jonas** (Morgan Stanley) - Bull but adjusts thesis based on data
+- **Dan Ives** (Wedbush) - Your article mentioned him, tracks sentiment and progress
+
+**Independent/Academic:**
+- **Brad Templeton** (Forbes, former Google AV advisor) - Technical feasibility focus
+- **Phil Koopman** (Carnegie Mellon) - AV safety expert, very technical
+- **Missy Cummings** (George Mason University) - Autonomous systems expert, critical of Tesla's approach
+
+**Where to find them:**
+- Twitter/X (real-time reactions to Tesla news)
+- Quarterly research notes (available through brokerage platforms)
+- Media appearances (Bloomberg, CNBC)
+
+---
+
+## **5. COMPETITIVE INTELLIGENCE**
+
+**Waymo Progress Tracker:**
+- URL: https://waymo.com/ (blog section)
+- **What to track:** 
+  - Geographic expansion announcements
+  - Paid rides milestone (already doing 100K+ weekly)
+  - Technology partnerships
+- **Red flags for Tesla:** Waymo expanding faster than Tesla deploying
+- **Check frequency:** Monthly
+
+**Chinese AV Companies (Baidu Apollo, Pony.ai, WeRide):**
+- **What to track:** 
+  - Deployment scale in Chinese cities
+  - Technology demonstrations
+  - Cost-per-vehicle trends
+- **Red flags for Tesla:** China achieving mass deployment while Tesla struggles
+- **Check frequency:** Quarterly
+
+---
+
+## **6. CROWDSOURCED & REAL-WORLD DATA**
+
+**Tesla FSD Beta Tracker (Teslafi, TeslaScope):**
+- URL: https://www.teslafi.com/
+- **What to track:** 
+  - User-reported FSD version adoption
+  - Intervention rates (community-reported)
+  - Geographic availability
+- **Red flags:** Stagnant version numbers, user complaints increasing
+- **Check frequency:** Monthly
+
+**YouTube FSD Test Channels:**
+- **Channels to follow:**
+  - **AI DRIVR** - Detailed FSD testing, data-focused
+  - **Whole Mars Catalog** - Pro-Tesla but honest about failures
+  - **Chuck Cook** - Tests specific challenging scenarios repeatedly
+- **What to track:** 
+  - Success rate on standardized routes over time
+  - Types of failures (are they the same problems persisting?)
+- **Red flags:** Same failure modes persisting across versions
+- **Check frequency:** Monthly spot checks
+
+**Reddit Communities (for sentiment, not gospel):**
+- r/SelfDrivingCars - Mix of industry professionals, generally technical
+- r/TeslaMotors - Owners, mix of bulls/bears
+- **What to track:** Shift in community sentiment, recurring problem reports
+- **Red flags:** Even bulls turning bearish, safety concerns from owners
+
+---
+
+## **7. LEGAL & REGULATORY DEVELOPMENTS**
+
+**PACER (Federal Court Records):**
+- URL: https://pacer.uscourts.gov/
+- **What to track:** Lawsuits against Tesla for FSD/Autopilot issues
+- **Red flags:** Class actions gaining traction, government investigations
+- **Check frequency:** Quarterly
+
+**State Legislature Tracking:**
+- **What to track:** Bills restricting or regulating autonomous vehicles
+- **Red flags:** States passing restrictive legislation citing Tesla incidents
+- **Check frequency:** Semi-annually
+
+---
+
+## **8. FINANCIAL MARKET SIGNALS**
+
+**Insider Trading (SEC Form 4 filings):**
+- URL: http://openinsider.com/ (aggregator)
+- **What to track:** Musk, executive, and board selling patterns
+- **Red flags:** Heavy selling by people who know the technology best
+- **Check frequency:** Weekly
+
+**Options Market (Put/Call Ratios):**
+- **What to track:** Unusual options activity, sentiment shifts
+- **Red flags:** Smart money betting against Tesla via puts
+- **Check frequency:** Weekly (requires trading platform access)
+
+**Credit Default Swaps (CDS) on Tesla Debt:**
+- **What to track:** Cost to insure Tesla bonds
+- **Red flags:** Spreads widening = market pricing in risk
+- **Check frequency:** Monthly
+
+---
+
+## **YOUR MONITORING DASHBOARD (Practical Setup)**
+
+**Monthly Check (30 minutes):**
+1. NHTSA incident database - any new Tesla investigations?
+2. Tesla subreddit/Twitter - what's the community saying?
+3. YouTube FSD channels - watch 2-3 recent test videos
+4. Insider trading tracker - any unusual selling?
+
+**Quarterly Deep Dive (2-3 hours):**
+1. Tesla earnings call - listen for robotaxi mentions, timeline changes
+2. Analyst reports - read 2-3 from the objective list above
+3. Competitive progress - what did Waymo/Cruise announce?
+4. DMV/regulatory filings - any new data released?
+5. Academic research - any new peer-reviewed studies?
+
+**Annual Assessment:**
+1. Guidehouse AV leaderboard - where does Tesla rank?
+2. Year-over-year progress - is FSD meaningfully better?
+3. Regulatory environment - friendlier or more hostile?
+4. Competitive landscape - is Tesla losing or gaining ground?
+
+---
+
+## **RED FLAG SCORECARD (Your Exit Trigger Framework)**
+
+Assign points for each occurrence, consider exiting if you hit 10+ points in 12 months:
+
+- **NHTSA opens formal investigation into FSD:** 3 points
+- **Fatal accident where FSD was engaged and at fault:** 5 points
+- **Major regulatory approval denied (California, Texas):** 4 points
+- **Musk pushes robotaxi timeline back >1 year:** 2 points
+- **Waymo expands to 10+ cities while Tesla stuck at <3:** 3 points
+- **Peer-reviewed study shows Tesla less safe than human drivers:** 5 points
+- **Class action lawsuit wins major ruling against Tesla:** 3 points
+- **FSD version numbers stagnate for 6+ months:** 2 points
+- **Key AI/Autopilot executives leave Tesla:** 3 points each
+- **Tesla drops below #5 on Guidehouse leaderboard:** 4 points
+
+---
+
+**The Bottom Line:**
+
+You need a mix of:
+- **Hard data** (accident rates, regulatory filings, competitive metrics)
+- **Expert interpretation** (people who understand the tech, not just cheerleaders)
+- **Market signals** (what are people with money on the line actually doing?)
+
+Set up Google Alerts for: "Tesla FSD investigation," "Tesla Autopilot accident," "Waymo expansion," "NHTSA Tesla"
+
+This keeps you informed without requiring full-time monitoring. The key is **having predetermined exit criteria** before you invest, so emotion doesn't override data when things go south.
+

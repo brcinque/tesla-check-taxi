@@ -1,0 +1,44 @@
+Scenario 1: Robotaxi Meets Middle-of-the-Road Expectations (5-7 years)
+What "Middle of the Road" Looks Like:
+Year 1-2 (2026-2027):
+
+FSD receives limited regulatory approval in 2-3 friendly jurisdictions (Texas, Arizona, maybe Florida)
+Tesla launches supervised robotaxi service in Austin, Phoenix
+Initial fleet: 5,000-10,000 vehicles operating
+Service is functional but not revolutionary - comparable to Waymo's current operation
+Lots of geofencing, limited hours, weather restrictions
+Customer adoption is slow but steady
+
+Year 3-4 (2028-2029):
+
+Expansion to 5-8 major metro areas (mostly sunbelt cities)
+Fleet grows to 50,000-75,000 robotaxis operating
+Revenue: $2-3 billion annually (meaningful but not transformative)
+Technology works "pretty well" - 95% success rate, occasional interventions needed
+Competition intensifies: Waymo scales, Chinese companies deploy, legacy auto enters
+Tesla's cost advantage (~$25K per vehicle vs. Waymo's $100K+ custom builds) becomes evident
+
+Year 5-7 (2030-2032):
+
+Operating in 15-20 cities, but major markets (NYC, Chicago, dense urban cores) still problematic
+Fleet: 150,000-250,000 vehicles
+Revenue: $8-12 billion annually
+EBITDA contribution: $3-5 billion (25-40% margins)
+Tesla owns 30-40% of the autonomous ride-hail market (not a monopoly)
+
+Financial Impact:
+
+Tesla's total EBITDA: $50-70 billion (robotaxi is 5-10% of total)
+Market cap: $2.5-3.5 trillion
+Stock price: $780-1,090
+P/E ratio normalizes somewhat as business matures
+
+What You'd See/Hear:
+
+"Tesla's robotaxi is profitable but not the revolution promised"
+Analysts debate whether it's a "car company with a robotaxi division" or "robotaxi company that sells cars"
+Musk adjusts timelines repeatedly, blames regulations
+Service availability is patchy - works great in Phoenix, struggles in Seattle
+Consumer sentiment: "It's convenient when it works, but I still own a car"
+
+

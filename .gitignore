@@ -25,12 +25,15 @@ wheels/
 
 # Configuration with API keys
 config.py
+tokens.txt
 
-# Output files
+# Output files (exclude generated files, keep project files)
 output/
 *.png
-*.txt
-*.json
+archive/**/*.json
+archive/**/*.txt
+archive/**/*.png
+archive/**/*.html
 
 # IDE
 .vscode/
