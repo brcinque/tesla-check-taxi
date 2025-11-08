@@ -1,0 +1,254 @@
+================================================================================
+TESLA ROBOTAXI FAILURE RISK ASSESSMENT REPORT
+Generated: 2025-11-08 08:32:16
+================================================================================
+
+OVERALL SUCCESS SCORE: 45.8/100
+FAILURE RISK: 54.2%
+
+STATUS: ⚠️ HIGH RISK - Many concerning signals
+RECOMMENDATION: Review position sizing
+
+================================================================================
+
+DETAILED INDICATORS:
+
+REGULATORY SENTIMENT
+--------------------------------------------------------------------------------
+Score: 55.0/100
+Weight: 20%
+
+        Recent Regulatory Signals:
+        • NHTSA: Ongoing investigation into FSD crashes (NEGATIVE)
+        • California DMV: No new autonomous permits issued to Tesla (NEGATIVE)
+        • Texas: Favorable testing environment continues (POSITIVE)
+        • Federal: No new framework legislation (NEUTRAL)
+        
+        Score: 55/100 (Below 50 is concerning)
+        
+
+SAFETY INCIDENTS
+--------------------------------------------------------------------------------
+Score: 45.0/100
+Weight: 20%
+
+        Safety Incident Analysis (REAL DATA - ENHANCED):
+        
+        
+        NHTSA CRASH DATA (TIER 1 - Nationwide, 12 months):
+        • Tesla: 736 crashes, 17 serious injuries, 5 fatalities
+        • Waymo: 23 crashes, 0 serious injuries, 0 fatalities
+        • Cruise: 104 crashes (permit suspended)
+        
+        KEY FINDINGS:
+        • Tesla has 30x+ more crashes than Waymo despite Waymo having more autonomous miles
+        • Tesla crashes include fatalities, Waymo does not
+        • NHTSA investigating Tesla Autopilot/FSD specifically
+        
+        Note: Data represents reported crashes. Tesla numbers include supervised Autopilot, not fully autonomous
+        
+        
+        NEWS MONITORING (Last 30 days):
+        • Safety/crash article mentions: 3
+        • Monitoring status: LOW
+        
+        Score: 45/100 (Below 60 suggests serious problems)
+        
+
+TIMELINE SLIPPAGE
+--------------------------------------------------------------------------------
+Score: 37.5/100
+Weight: 15%
+
+        Timeline Credibility Analysis:
+        • Total predictions tracked: 8
+        • Predictions missed: 5
+        • Current status: "2026/2027 production" (already delayed from 2025)
+        • Pattern: Consistent 2-3 year delays on all major milestones
+        
+        
+        Track Record Score: 37.5/100
+        
+        🚨 RED FLAG: After 10 years of promises, zero cities with unsupervised robotaxis
+        
+
+COMPETITOR PROGRESS
+--------------------------------------------------------------------------------
+Score: 25.0/100
+Weight: 10%
+
+        Competitive Position Analysis (REAL DATA + DMV):
+        
+        OPERATIONAL ROBOTAXIS TODAY:
+        • Waymo: 4 cities, 150K+ weekly rides, OPERATIONAL
+        • Baidu Apollo: 11 cities (China), 60K+ weekly rides, OPERATIONAL
+        • Cruise: 0 cities, 0 weekly rides, SUSPENDED
+        • Tesla: 0 cities, 0 weekly rides, TESTING
+        
+        
+        CA DMV DISENGAGEMENT DATA (2023 Report):
+        • Waymo: 2,303,542 miles, 136 disengagements
+          → 16,938 miles per disengagement (LEADER)
+        • Cruise: 1,236,849 miles, 2,350 disengagements
+          → 526 miles per disengagement
+        • Tesla: NO DMV TESTING
+          → Tesla does not participate in CA DMV autonomous testing program
+        
+        GAP ANALYSIS:
+        • Waymo has 2.3M+ autonomous miles, Tesla has 0 reported
+        • Cannot compare - Tesla not in program
+        • 🚨 Tesla bypassing regulatory testing requirements
+        
+        
+        Tesla Ranking: DISTANT 4TH
+        Gap Assessment: Waymo and Baidu 5+ years ahead in deployment
+        
+        
+        CPUC COMMERCIAL DEPLOYMENT (TIER 1 - 2024 Q3):
+        • Waymo: FULLY OPERATIONAL - 150,000+ weekly rides
+          Fleet: ~300 vehicles | Area: San Francisco, Peninsula, parts of LA
+        • Tesla: NO PERMIT - 0 rides
+          Has not applied for CPUC deployment permit
+        
+        KEY FINDING:
+        • Waymo doing 150K+ rides/week, Tesla doing 0
+        • Tesla avoiding commercial permits and regulatory oversight
+        
+        
+        Score: 25/100 (Tesla is 5+ years behind in deployment)
+        
+        🚨 CRITICAL: Competitors have actual robotaxis operating TODAY
+        Source: Industry reports & company disclosures + CA DMV + CPUC
+        
+
+INSIDER SELLING
+--------------------------------------------------------------------------------
+Score: 40.0/100
+Weight: 10%
+
+        Insider Trading Analysis (REAL DATA):
+        
+        • SEC Form 4 filings (last 90 days): 5
+        • Activity level: LOW
+        • Source: SEC Edgar API
+        • Last check: 2025-11-08T08:32:14.760750
+        
+        BACKGROUND:
+        • Elon Musk: $10B+ in stock sales (reported)
+        • Executive team: Net selling across board
+        • No significant insider purchases in 12 months
+        
+        Score: 40/100 (Below 50 suggests insiders not confident)
+        
+        ⚠️ NOTE: Heavy insider selling often precedes negative developments
+        📊 Current filing rate: NORMAL
+        
+
+NEWS SENTIMENT
+--------------------------------------------------------------------------------
+Score: 47.0/100
+Weight: 10%
+
+        News Sentiment Analysis (30-day rolling - REAL DATA):
+        
+        • Total articles analyzed: 100
+        • Sentiment: NEUTRAL
+        • Raw sentiment score: -2
+        
+        Recent headlines:
+        
+        1. Musk wants to get rid of Tesla’s robotaxi babysitters ‘by the end of the year’
+        2. Tesla is facing an investigation over Full Self-Driving traffic violations
+        3. Nvidia and Uber Say They’re Building a 100,000-Vehicle Robotaxi Network
+        
+        Sentiment Score: 47/100 (Based on real news data)
+        
+
+TECHNICAL PROGRESS
+--------------------------------------------------------------------------------
+Score: 60.0/100
+Weight: 10%
+
+        Technical Progress Assessment:
+        
+        CAPABILITIES TODAY:
+        ✓ Highway driving (mostly reliable)
+        ✓ Simple intersections (good)
+        ✗ Complex urban environments (struggles)
+        ✗ Adverse weather (poor)
+        ✗ Construction zones (unreliable)
+        
+        Score: 60/100 (Progress continuing but slowing)
+        
+        ⚠️ CONCERN: Improvement rate insufficient to meet 2026-2027 timeline
+        
+
+MARKET CONFIDENCE
+--------------------------------------------------------------------------------
+Score: 59.8/100
+Weight: 5%
+
+        Market Confidence Indicators (REAL DATA - Finnhub):
+        
+        CURRENT PRICE: $429.52 (-3.68% today)
+        
+        ANALYST RATINGS (Latest):
+        • Strong Buy: 8
+        • Buy: 22
+        • Hold: 19
+        • Sell: 10
+        • Strong Sell: 2
+        • Total Analysts: 61
+        
+        MARKET DATA:
+        • Day High: $439.36
+        • Day Low: $421.88
+        • Market Cap: $1428505.9329033252B
+        • Beta: 1.8350618
+        • P/E Ratio: 271.1666
+        • 52-Week High: $488.5399
+        • 52-Week Low: $214.25
+        • Short Interest: N/A%
+        • Next Earnings: 2025-10-22
+        
+        
+        Score: 60/100 (Based on analysts + price targets + short interest)
+        Source: Finnhub API - ENHANCED DATA + TIER 2
+        
+
+EXECUTIVE DEPARTURES
+--------------------------------------------------------------------------------
+Score: 0.0/100
+Weight: 0%
+
+        Executive Departure Tracking:
+        
+        • No automated tracking available
+        • Add NEWS_API_KEY to config.py for real-time monitoring
+        
+        RED FLAG POINTS: 0 (Manual tracking required)
+        
+
+================================================================================
+DECISION FRAMEWORK:
+================================================================================
+
+
+EXIT TRIGGERS (Consider selling if):
+• Failure Risk > 75% for 2+ consecutive checks
+• Major safety incident with regulatory crackdown
+• Competitors achieve 10x scale vs Tesla
+• Stock falls below $300
+
+HOLD TRIGGERS (Maintain if):
+• Failure Risk < 50%
+• Genuine regulatory approvals received
+• Unsupervised operation launches
+• Timeline promises met
+
+ADD TRIGGERS (Increase if):
+• Failure Risk < 30%
+• Commercial service launches successfully
+• Multiple city approvals
+• Safety data proves superior
+            

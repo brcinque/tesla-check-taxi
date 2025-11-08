@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla Robotaxi Monitor - Risk Assessment Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .header .timestamp {
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+        
+        .risk-overview {
+            background: linear-gradient(135deg, #ffc10715 0%, #ffc10705 100%);
+            border-left: 5px solid #ffc107;
+            padding: 30px;
+            margin: 30px;
+            border-radius: 10px;
+        }
+        
+        .risk-score {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .score-item {
+            text-align: center;
+        }
+        
+        .score-item .label {
+            font-size: 0.9em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .score-item .value {
+            font-size: 3em;
+            font-weight: 700;
+            color: #ffc107;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            background: #ffc107;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        .recommendation {
+            text-align: center;
+            font-size: 1.1em;
+            color: #666;
+            margin-top: 15px;
+        }
+        
+        .data-sources {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            margin: 0 30px 30px 30px;
+            border-radius: 10px;
+            border-left: 5px solid #007bff;
+        }
+        
+        .data-sources h2 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+        
+        .source-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        
+        .source-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        
+        .source-active {
+            color: #28a745;
+            font-weight: 600;
+        }
+        
+        .source-inactive {
+            color: #dc3545;
+        }
+        
+        .indicators {
+            padding: 0 30px 30px 30px;
+        }
+        
+        .indicators h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #1e3c72;
+        }
+        
+        .indicator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+        }
+        
+        .indicator-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid #e9ecef;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .indicator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .indicator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .indicator-header h3 {
+            font-size: 1.2em;
+            color: #1e3c72;
+        }
+        
+        .badge {
+            background: #007bff;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge-tier1 {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            box-shadow: 0 2px 6px rgba(231, 76, 60, 0.3);
+        }
+        
+        .badge-tier2 {
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            box-shadow: 0 2px 6px rgba(155, 89, 182, 0.3);
+        }
+        
+        .badge-journey {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            box-shadow: 0 2px 6px rgba(52, 152, 219, 0.3);
+        }
+        
+        .journey-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 5px solid #3498db;
+        }
+        
+        .journey-progress {
+            padding: 20px 0;
+        }
+        
+        .journey-phase {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .phase-label {
+            display: block;
+            font-size: 0.75em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .phase-value {
+            display: block;
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .phase-desc {
+            display: block;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .journey-bar {
+            height: 30px;
+            margin: 20px 0 10px 0;
+        }
+        
+        .progress-label {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        .comparison-text {
+            font-size: 0.85em;
+            color: #666;
+            margin-left: 8px;
+        }
+        
+        .score-label {
+            font-size: 0.85em;
+            color: #888;
+        }
+        
+        .indicator-score {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .score-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+        
+        .score-max {
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .weight {
+            margin-left: auto;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .progress-bar {
+            background: #e9ecef;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        
+        .indicator-details {
+            font-size: 0.85em;
+            color: #666;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .indicator-details pre {
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+        }
+        
+        .decision-framework {
+            background: #f8f9fa;
+            padding: 30px;
+            margin: 30px;
+            border-radius: 10px;
+        }
+        
+        .decision-framework h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #1e3c72;
+        }
+        
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .framework-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid;
+        }
+        
+        .framework-exit {
+            border-left-color: #dc3545;
+        }
+        
+        .framework-hold {
+            border-left-color: #ffc107;
+        }
+        
+        .framework-add {
+            border-left-color: #28a745;
+        }
+        
+        .framework-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .framework-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .framework-card li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .framework-card li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .indicator-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .score-item .value {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚗 Tesla Robotaxi Monitor</h1>
+            <div class="subtitle">Risk Assessment Dashboard - Powered by Real-Time Data</div>
+            <div class="timestamp">Generated: 2025-11-08 08:32:16</div>
+        </div>
+        
+        <div class="risk-overview">
+            <div class="risk-score">
+                <div class="score-item">
+                    <div class="label">Success Probability</div>
+                    <div class="value">45.8%</div>
+                </div>
+                <div class="score-item">
+                    <div class="label">Status</div>
+                    <div class="status-badge">⚠️ HIGH RISK</div>
+                </div>
+                <div class="score-item">
+                    <div class="label">Failure Risk</div>
+                    <div class="value">54.2%</div>
+                </div>
+            </div>
+            <div class="recommendation">
+                <strong>Recommendation:</strong> Review position sizing
+            </div>
+        </div>
+        
+        <div class="data-sources">
+            <h2>📊 Data Sources Status</h2>
+            <div class="source-list">
+                <div class="source-item">
+                    <span class="source-active">✅</span>
+                    <span>News API (Real-time News)</span>
+                </div>
+                <div class="source-item">
+                    <span class="source-active">✅</span>
+                    <span>Finnhub API (Stock Data)</span>
+                </div>
+                <div class="source-item">
+                    <span class="source-active">✅</span>
+                    <span>SEC Edgar (Insider Trading)</span>
+                </div>
+                <div class="source-item">
+                    <span class="source-active">✅</span>
+                    <span>NHTSA Safety Data</span>
+                </div>
+                <div class="source-item">
+                    <span class="source-active">✅</span>
+                    <span>Competitor Progress</span>
+                </div>
+                <div class="source-item">
+                    <span class="source-active">✅</span>
+                    <span>Red Flag Scorecard</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="indicators">
+            <h2>📈 Indicator Analysis</h2>
+            <div class="indicator-grid">
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>Regulatory Sentiment</h3>
+                        
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">55</span>
+                        <span class="score-max">/100</span>
+                        <span class="weight">Weight: 20%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 55%; background-color: #ffc107;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+        Recent Regulatory Signals:
+        • NHTSA: Ongoing investigation into FSD crashes (NEGATIVE)
+        • California DMV: No new autonomous permits issued to Tesla (NEGATIVE)
+        • Texas: Favorable testing environment continues (POSITIVE)
+        • Federal: No new framework legislation (NEUTRAL)
+        
+        Score: 55/100 (Below 50 is concerning)
+        </pre>
+                    </div>
+                </div>
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>Safety Incidents</h3>
+                        <span class="badge">LIVE DATA</span>
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">45</span>
+                        <span class="score-max">/100</span>
+                        <span class="weight">Weight: 20%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%; background-color: #ff8c00;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+        Safety Incident Analysis (REAL DATA - ENHANCED):
+        
+        
+        NHTSA CRASH DATA (TIER 1 - Nationwide, 12 months):
+        • Tesla: 736 crashes, 17 serious injuries, 5 fatalities
+        • Waymo: 23 crashes, 0 serious injuries, 0 fatalities
+        • Cruise: 104 crashes (permit suspended)
+        
+        KEY FINDINGS:
+        • Tesla has 30x+ more crashes than Waymo despite Waymo having more autonomous miles
+        • Tesla crashes include fatalities, Waymo does not
+        • NHTSA investigating Tesla Autopilot/FSD specifically
+        
+        Note: Data represents reported crashes. Tesla numbers include supervised Autopilot, not fully autonomous
+        
+        
+        NEWS MONITORING (Last 30 days):
+        • Safety/crash article mentions: 3
+        • Monitoring status: LOW
+        
+        Score: 45/100 (Below 60 suggests serious problems)
+        </pre>
+                    </div>
+                </div>
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>Timeline Slippage</h3>
+                        
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">38</span>
+                        <span class="score-max">/100</span>
+                        <span class="weight">Weight: 15%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 37.5%; background-color: #ff8c00;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+        Timeline Credibility Analysis:
+        • Total predictions tracked: 8
+        • Predictions missed: 5
+        • Current status: "2026/2027 production" (already delayed from 2025)
+        • Pattern: Consistent 2-3 year delays on all major milestones
+        
+        
+        Track Record Score: 37.5/100
+        
+        🚨 RED FLAG: After 10 years of promises, zero cities with unsupervised robotaxis
+        </pre>
+                    </div>
+                </div>
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>Competitor Progress</h3>
+                        <span class="badge">LIVE DATA</span>
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">25</span>
+                        <span class="score-max">/100</span>
+                        <span class="weight">Weight: 10%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 25%; background-color: #dc3545;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+        Competitive Position Analysis (REAL DATA + DMV):
+        
+        OPERATIONAL ROBOTAXIS TODAY:
+        • Waymo: 4 cities, 150K+ weekly rides, OPERATIONAL
+        • Baidu Apollo: 11 cities (China), 60K+ weekly rides, OPERATIONAL
+        • Cruise: 0 cities, 0 weekly rides, SUSPENDED
+        • Tesla: 0 cities, 0 weekly rides, TESTING
+        
+        
+        CA DMV DISENGAGEMENT DATA (2023 Report):
+        • Waymo: 2,303,542 miles, 136 disengagements
+          → 16,938 miles per disengagement (LEADER)
+        • Cruise: 1,236,849 miles, 2,350 disengagements
+          → 526 miles per disengagement
+        • Tesla: NO DMV TESTING
+          → Tesla does not participate in CA DMV autonomous testing program
+        
+        GAP ANALYSIS:
+        • Waymo has 2.3M+ autonomous miles, Tesla has 0 reported
+        • Cannot compare - Tesla not in program
+        • 🚨 Tesla bypassing regulatory testing requirements
+        
+        
+        Tesla Ranking: DISTANT 4TH
+        Gap Assessment: Waymo and Baidu 5+ years ahead in deployment
+        
+        
+        CPUC COMMERCIAL DEPLOYMENT (TIER 1 - 2024 Q3):
+        • Waymo: FULLY OPERATIONAL - 150,000+ weekly rides
+          Fleet: ~300 vehicles | Area: San Francisco, Peninsula, parts of LA
+        • Tesla: NO PERMIT - 0 rides
+          Has not applied for CPUC deployment permit
+        
+        KEY FINDING:
+        • Waymo doing 150K+ rides/week, Tesla doing 0
+        • Tesla avoiding commercial permits and regulatory oversight
+        
+        
+        Score: 25/100 (Tesla is 5+ years behind in deployment)
+        
+        🚨 CRITICAL: Competitors have actual robotaxis operating TODAY
+        Source: Industry reports & company disclosures + CA DMV + CPUC
+        </pre>
+                    </div>
+                </div>
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>Insider Selling</h3>
+                        <span class="badge">LIVE DATA</span>
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">40</span>
+                        <span class="score-max">/100</span>
+                        <span class="weight">Weight: 10%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%; background-color: #ff8c00;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+        Insider Trading Analysis (REAL DATA):
+        
+        • SEC Form 4 filings (last 90 days): 5
+        • Activity level: LOW
+        • Source: SEC Edgar API
+        • Last check: 2025-11-08T08:32:14.760750
+        
+        BACKGROUND:
+        • Elon Musk: $10B+ in stock sales (reported)
+        • Executive team: Net selling across board
+        • No significant insider purchases in 12 months
+        
+        Score: 40/100 (Below 50 suggests insiders not confident)
+        
+        ⚠️ NOTE: Heavy insider selling often precedes negative developments
+        📊 Current filing rate: NORMAL
+        </pre>
+                    </div>
+                </div>
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>News Sentiment</h3>
+                        <span class="badge">LIVE DATA</span>
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">47</span>
+                        <span class="score-max">/100</span>
+                        <span class="weight">Weight: 10%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 47.0%; background-color: #ff8c00;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+        News Sentiment Analysis (30-day rolling - REAL DATA):
+        
+        • Total articles analyzed: 100
+        • Sentiment: NEUTRAL
+        • Raw sentiment score: -2
+        
+        Recent headlines:
+        
+        1. Musk wants to get rid of Tesla’s robotaxi babysitters ‘by the end of the year’
+        2. Tesla is facing an investigation over Full Self-Driving traffic violations
+        3. Nvidia and Uber Say They’re Building a 100,000-Vehicle Robotaxi Network
+        
+        Sentiment Score: 47/100 (Based on real news data)
+        </pre>
+                    </div>
+                </div>
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>Technical Progress</h3>
+                        
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">60</span>
+                        <span class="score-max">/100</span>
+                        <span class="weight">Weight: 10%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%; background-color: #ffc107;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+        Technical Progress Assessment:
+        
+        CAPABILITIES TODAY:
+        ✓ Highway driving (mostly reliable)
+        ✓ Simple intersections (good)
+        ✗ Complex urban environments (struggles)
+        ✗ Adverse weather (poor)
+        ✗ Construction zones (unreliable)
+        
+        Score: 60/100 (Progress continuing but slowing)
+        
+        ⚠️ CONCERN: Improvement rate insufficient to meet 2026-2027 timeline
+        </pre>
+                    </div>
+                </div>
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>Market Confidence</h3>
+                        <span class="badge">LIVE DATA</span>
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">60</span>
+                        <span class="score-max">/100</span>
+                        <span class="weight">Weight: 5%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 59.83606557377049%; background-color: #ffc107;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+        Market Confidence Indicators (REAL DATA - Finnhub):
+        
+        CURRENT PRICE: $429.52 (-3.68% today)
+        
+        ANALYST RATINGS (Latest):
+        • Strong Buy: 8
+        • Buy: 22
+        • Hold: 19
+        • Sell: 10
+        • Strong Sell: 2
+        • Total Analysts: 61
+        
+        MARKET DATA:
+        • Day High: $439.36
+        • Day Low: $421.88
+        • Market Cap: $1428505.9329033252B
+        • Beta: 1.8350618
+        • P/E Ratio: 271.1666
+        • 52-Week High: $488.5399
+        • 52-Week Low: $214.25
+        • Short Interest: N/A%
+        • Next Earnings: 2025-10-22
+        
+        
+        Score: 60/100 (Based on analysts + price targets + short interest)
+        Source: Finnhub API - ENHANCED DATA + TIER 2
+        </pre>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        
+                <div class="indicator-card journey-card">
+                    <div class="indicator-header">
+                        <h3>🗺️ Robotaxi Journey Progress</h3>
+                        <span class="badge badge-journey">ROADMAP</span>
+                    </div>
+                    <div class="journey-progress">
+                        <div class="journey-phase">
+                            <span class="phase-label">CURRENT PHASE</span>
+                            <span class="phase-value">Testing Phase</span>
+                            <span class="phase-desc">Technology testing, regulatory preparation</span>
+                        </div>
+                        <div class="progress-bar journey-bar">
+                            <div class="progress-fill" style="width: 45%; background: linear-gradient(90deg, #e74c3c 0%, #f39c12 50%, #27ae60 100%);"></div>
+                        </div>
+                        <div class="progress-label">45% to Year 1-2 Goals (2026-2027)</div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+ROBOTAXI JOURNEY - WHERE ARE WE? (Based on input/goals.txt)
+
+CURRENT STATUS (2024):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Phase: Testing Phase
+Overall Progress: 45%
+
+YEAR 1-2 GOALS (2026-2027) - Target in 2-3 years:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 GOAL: Limited regulatory approval (2-3 jurisdictions)
+   STATUS: ⚠️ Unclear
+   REALITY: High regulatory concerns detected
+
+📋 GOAL: Launch in Austin, Phoenix
+   STATUS: ⚠️ Testing
+   REALITY: No CPUC permit, no DMV testing participation
+
+📋 GOAL: Fleet of 5,000-10,000 vehicles
+   STATUS: ❌ 0 Vehicles (Goal: 5,000-10,000)
+   REALITY: 0 commercial robotaxis deployed
+
+📋 GOAL: Supervised service, geofenced operations
+   STATUS: ⚠️ Technology status unclear
+   REALITY: FSD beta exists but not approved for unsupervised operation
+
+KEY GAPS TO YEAR 1-2 GOALS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚨 NO REGULATORY APPROVALS (Need 2-3 jurisdictions)
+🚨 NO COMMERCIAL DEPLOYMENT (Need Austin or Phoenix launch)
+🚨 NO FLEET OPERATIONS (Need 5,000-10,000 vehicles)
+🚨 NO DMV TESTING (0 miles vs Waymo's 2.3M+ miles)
+🚨 NO CPUC PERMIT (Can't operate commercially in CA)
+
+TIMELINE REALITY CHECK:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Current Year: 2024
+Target Year: 2026-2027 (2-3 years away)
+Time Remaining: ~24-36 months
+
+WHAT NEEDS TO HAPPEN:
+✓ Pass regulatory approval in at least 2 states
+✓ Obtain commercial permits (CPUC or equivalent)
+✓ Build/convert 5,000-10,000 vehicle fleet
+✓ Launch supervised service in 1-2 cities
+✓ Establish operational infrastructure
+✓ Demonstrate safety record to regulators
+
+COMPARISON TO COMPETITION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WAYMO (Today):
+✅ Operating commercially in 3+ cities
+✅ 150,000+ paid rides per week
+✅ ~300 vehicle fleet (already operational)
+✅ 2.3M+ test miles logged
+✅ Full regulatory approval
+
+TESLA (Today):
+❌ 0 commercial operations
+❌ 0 paid rides
+❌ 0 commercial vehicles
+❌ 0 DMV test miles
+❌ No commercial permits
+
+BOTTOM LINE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Tesla is currently in PRE-LAUNCH phase with significant gaps to even
+the most conservative "middle-of-the-road" Year 1-2 goals. Achieving
+5,000-10,000 deployed robotaxis by 2026-2027 appears highly unlikely
+given current regulatory, safety, and deployment status.
+
+Source: input/goals.txt + real-time monitoring data</pre>
+                    </div>
+                </div>
+                
+        
+        <div class="indicators">
+            <h2>🎯 Tier 1 & Tier 2 Enhanced Data</h2>
+            <div class="indicator-grid">
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>NHTSA Crash Data (Nationwide)</h3>
+                        <span class="badge badge-tier1">TIER 1</span>
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">736</span>
+                        <span class="score-label">Tesla Crashes</span>
+                        <span class="comparison-text">vs 23 Waymo</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%; background-color: #dc3545;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+NHTSA Crash Data (12 months - Nationwide):
+
+TESLA (HIGH RISK):
+• Total Crashes: 736
+• Fatalities: 5
+• Serious Injuries: 17
+• Status: Under investigation
+
+WAYMO (LOW RISK):
+• Total Crashes: 23
+• Fatalities: 0
+• Serious Injuries: 0
+• Status: Operating
+
+KEY FINDING:
+🚨 Tesla has 30x+ more crashes than Waymo despite Waymo having more autonomous miles
+
+Note: Data represents reported crashes. Tesla numbers include supervised Autopilot, not fully autonomous
+Source: NHTSA Standing General Order (SGO) - AV Crash Reporting Database</pre>
+                    </div>
+                </div>
+                
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>CPUC Commercial Deployment</h3>
+                        <span class="badge badge-tier1">TIER 1</span>
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">0</span>
+                        <span class="score-label">Tesla Rides/Week</span>
+                        <span class="comparison-text">vs 150,000+ Waymo</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%; background-color: #dc3545;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+CPUC Commercial Deployment (2024 Q3):
+
+WAYMO (FULLY OPERATIONAL):
+• Commercial Status: FULLY OPERATIONAL
+• Weekly Rides: 150,000+
+• Fleet Size: ~300 vehicles
+• Service Area: San Francisco, Peninsula, parts of LA
+• Safety Score: EXCELLENT
+
+TESLA (NO PERMIT):
+• Commercial Status: NO PERMIT
+• Weekly Rides: 0
+• Fleet Size: 0
+• Note: Has not applied for CPUC deployment permit
+
+KEY FINDING:
+🚨 Waymo doing 150K+ rides/week, Tesla doing 0
+🚨 Tesla avoiding commercial permits and regulatory oversight
+
+Source: California Public Utilities Commission (CPUC) AV Program</pre>
+                    </div>
+                </div>
+                
+                
+                <div class="indicator-card">
+                    <div class="indicator-header">
+                        <h3>CA DMV Disengagement Data</h3>
+                        <span class="badge badge-tier2">TIER 2</span>
+                    </div>
+                    <div class="indicator-score">
+                        <span class="score-value">0</span>
+                        <span class="score-label">Tesla Miles Tested</span>
+                        <span class="comparison-text">vs 16,938 mi/disengagement Waymo</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%; background-color: #dc3545;"></div>
+                    </div>
+                    <div class="indicator-details">
+                        <pre>
+CA DMV Autonomous Vehicle Testing (2023 Report):
+
+WAYMO (LEADER):
+• Miles Driven: 2,303,542
+• Disengagements: 136
+• Miles per Disengagement: 16,938 (BEST)
+
+CRUISE:
+• Miles Driven: 1,236,849
+• Disengagements: 2,350
+• Miles per Disengagement: 526
+
+TESLA:
+• Status: NO DMV TESTING
+• Note: Tesla does not participate in CA DMV autonomous testing program
+
+GAP ANALYSIS:
+🚨 Waymo has 2.3M+ autonomous miles, Tesla has 0 reported
+🚨 Cannot compare safety - Tesla not in program
+🚨 Concern: Tesla bypassing regulatory testing requirements
+
+Source: CA DMV Autonomous Vehicle Disengagement Reports (2023)</pre>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="decision-framework">
+            <h2>🎯 Decision Framework</h2>
+            <div class="framework-grid">
+                <div class="framework-card framework-exit">
+                    <h3>🚫 EXIT TRIGGERS</h3>
+                    <p style="margin-bottom: 10px; font-size: 0.9em; color: #666;">Consider selling if:</p>
+                    <ul>
+                        <li>Failure Risk > 75% for 2+ consecutive checks</li>
+                        <li>Major safety incident with regulatory crackdown</li>
+                        <li>Competitors achieve 10x scale vs Tesla</li>
+                        <li>Stock falls below $300</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-card framework-hold">
+                    <h3>⏸️ HOLD TRIGGERS</h3>
+                    <p style="margin-bottom: 10px; font-size: 0.9em; color: #666;">Maintain position if:</p>
+                    <ul>
+                        <li>Failure Risk < 50%</li>
+                        <li>Genuine regulatory approvals received</li>
+                        <li>Unsupervised operation launches</li>
+                        <li>Timeline promises met</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-card framework-add">
+                    <h3>✅ ADD TRIGGERS</h3>
+                    <p style="margin-bottom: 10px; font-size: 0.9em; color: #666;">Increase position if:</p>
+                    <ul>
+                        <li>Failure Risk < 30%</li>
+                        <li>Commercial service launches successfully</li>
+                        <li>Multiple city approvals</li>
+                        <li>Safety data proves superior</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>⚠️ NOT FINANCIAL ADVICE - This is a monitoring tool. Always do your own research.</p>
+            <p style="margin-top: 10px; opacity: 0.7;">Tesla Robotaxi Monitor v2.0 | Real-Time Data Integration</p>
+        </div>
+    </div>
+</body>
+</html>
