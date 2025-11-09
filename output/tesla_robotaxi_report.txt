@@ -1,10 +1,10 @@
 ================================================================================
 TESLA ROBOTAXI FAILURE RISK ASSESSMENT REPORT
-Generated: 2025-11-08 08:32:16
+Generated: 2025-11-09 07:05:20
 ================================================================================
 
-OVERALL SUCCESS SCORE: 45.8/100
-FAILURE RISK: 54.2%
+OVERALL SUCCESS SCORE: 46.4/100
+FAILURE RISK: 53.6%
 
 STATUS: ⚠️ HIGH RISK - Many concerning signals
 RECOMMENDATION: Review position sizing
@@ -49,7 +49,7 @@ Weight: 20%
         
         
         NEWS MONITORING (Last 30 days):
-        • Safety/crash article mentions: 3
+        • Safety/crash article mentions: 2
         • Monitoring status: LOW
         
         Score: 45/100 (Below 60 suggests serious problems)
@@ -131,7 +131,7 @@ Weight: 10%
         • SEC Form 4 filings (last 90 days): 5
         • Activity level: LOW
         • Source: SEC Edgar API
-        • Last check: 2025-11-08T08:32:14.760750
+        • Last check: 2025-11-09T07:05:18.072291
         
         BACKGROUND:
         • Elon Musk: $10B+ in stock sales (reported)
@@ -146,22 +146,22 @@ Weight: 10%
 
 NEWS SENTIMENT
 --------------------------------------------------------------------------------
-Score: 47.0/100
+Score: 53.0/100
 Weight: 10%
 
         News Sentiment Analysis (30-day rolling - REAL DATA):
         
         • Total articles analyzed: 100
         • Sentiment: NEUTRAL
-        • Raw sentiment score: -2
+        • Raw sentiment score: 2
         
         Recent headlines:
         
         1. Musk wants to get rid of Tesla’s robotaxi babysitters ‘by the end of the year’
-        2. Tesla is facing an investigation over Full Self-Driving traffic violations
-        3. Nvidia and Uber Say They’re Building a 100,000-Vehicle Robotaxi Network
+        2. Nvidia and Uber Say They’re Building a 100,000-Vehicle Robotaxi Network
+        3. Uber CEO says all cars will be autonomous in 20 years. Driving will be 'something like horseback riding.'
         
-        Sentiment Score: 47/100 (Based on real news data)
+        Sentiment Score: 53/100 (Based on real news data)
         
 
 TECHNICAL PROGRESS
