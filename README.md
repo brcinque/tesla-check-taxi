@@ -145,4 +145,14 @@ Check `FREE_ACCESS_GUIDE.md` for ethical ways to access paywalled content:
 
 ---
 
-⚠️ **NOT FINANCIAL ADVICE** - This is a monitoring tool. Always do your own research and consult professionals.
+## ⚠️ Disclaimer
+
+**NOT FINANCIAL ADVICE** - This is an educational research tool and personal monitoring system. It is not intended as investment advice, and users should conduct their own research and consult qualified professionals before making any financial decisions.
+
+**Data Sources** - All data is aggregated from publicly available sources including government agencies (NHTSA, SEC, CPUC), financial APIs, and news services. Data accuracy depends on source reliability and API availability. Users should independently verify information before relying on it.
+
+**Analysis & Opinion** - Risk assessments, scores, and commentary represent the tool creator's analysis and opinion based on available data. They are not statements of fact and should not be considered definitive predictions.
+
+**No Affiliation** - This project is not affiliated with, endorsed by, or connected to Tesla, Inc., or any other company mentioned. Company and product names are used for factual reference and comparison purposes only.
+
+**Open Source** - Code is provided as-is under MIT License. Users are responsible for their own use of this tool and any decisions made based on its output.
