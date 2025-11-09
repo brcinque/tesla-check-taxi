@@ -15,25 +15,27 @@ Outputs (saved to `output/` directory):
 - `tesla_robotaxi_report.txt` - Detailed report
 - `tesla_robotaxi_history.json` - Historical tracking data
 
-## Current Assessment: **50.1% Failure Risk** ⚠️
+## Current Assessment: **54.2% Failure Risk** ⚠️
 
 ### Key Red Flags:
 - **Competitor Progress: 25/100** 🚨 Tesla 5+ years behind (REAL DATA)
-- **Timeline Slippage: 38/100** 🚨 10 years of missed promises
+- **Timeline Slippage: 37.5/100** 🚨 10 years of missed promises
+- **Safety Incidents: 45/100** 🚨 NHTSA crash data shows 736 Tesla crashes vs 23 Waymo
 - **Insider Selling: 40/100** ⚠️ Heavy executive sales (SEC EDGAR TRACKING)
 
-## 8 Indicators Tracked
+## 9 Indicators Tracked
 
 | Indicator | Weight | Current Score |
 |-----------|--------|---------------|
 | Regulatory Sentiment | 20% | 55/100 |
-| Safety Incidents | 20% | 65/100 |
-| Timeline Slippage | 15% | 38/100 🚨 |
+| Safety Incidents | 20% | 45/100 🚨 |
+| Timeline Slippage | 15% | 37.5/100 🚨 |
 | Competitor Progress | 10% | 25/100 🚨 |
 | Insider Selling | 10% | 40/100 |
-| News Sentiment | 10% | 50/100 |
+| News Sentiment | 10% | 47/100 |
 | Technical Progress | 10% | 60/100 |
-| Market Confidence | 5% | 55/100 |
+| Market Confidence | 5% | 60/100 |
+| Executive Departures | 0% | Red Flag Indicator |
 
 ## Decision Framework
 
